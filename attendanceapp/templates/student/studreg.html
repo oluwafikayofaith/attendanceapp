@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.108.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='bootstrap/css/bootstrap.css')}}">
+	  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='fontawesome/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/signupp.css')}}">
+  
+    <title>Student Registration</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/starter-template/">
+
+    
+
+    
+
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="starter-template.css" rel="stylesheet">
+  </head>
+  <body>
+    
+<div class="col-lg-8 mx-auto p-4 py-md-5">
+  <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+      <span class="fs-4">Student Registration</span>
+  </header>
+
+  <main>
+    <div>
+    <form action="" method="post">
+      {{myform.hidden_tag()}}
+      <div class="form-group row mb-3">
+        {{myform.fullname.label}}
+        <div class="col-md-6">
+            {{myform.fullname(class_='form-control border-success')}}
+        
+        {%if myform.fullname.errors%}
+                {%for fullname_error in myform.fullname.errors%}
+                <span class="alert alert-danger col-md-6">{{fullname_error}}</span>
+            {%endfor%}
+            {%endif%}
+          </div>
+      </div>
+    <div class="form-group row mb-3">
+      {{myform.matno.label}}
+    <div class="col-md-6">
+      {{myform.matno(class_='form-control border-success')}}
+    {%if myform.matno.errors%}
+      {%for matno_error in myform.matno.errors%}
+      <span class="alert alert-danger col-md-6">{{matno_error}}</span>
+        {%endfor%}
+      {%endif%}
+    </div>
+  </div>
+<div class="form-group row mb-3">
+  {{myform.password.label}}
+  <div class="col-md-6">
+    {{myform.password(class_='form-control border-success')}}
+      {%if myform.password.errors%}
+        {%for password_error in myform.password.errors%}
+          <span class="alert alert-danger col-md-6">{{password_error}}</span>
+        {%endfor%}
+        {%endif%}
+      </div>
+</div>
+<div class="form-group row mb-3">
+  {{myform.confirm_password.label}}
+  <div class="col-md-6">
+    {{myform.confirm_password(class_='form-control border-success')}}
+  {%if myform.confirm_password.errors%}
+      {%for confirm_password_error in myform.confirm_password.errors%}
+      <span class="alert alert-danger col-md-6">{{confirm_password_error}}</span>
+      {%endfor%}
+      {%endif%}
+    </div>
+</div>
+<div class="form-group row mb-3">
+  {{myform.add.label}}
+  <div class="col-md-6">
+    {{myform.add(class_='form-control border-success')}}
+  {%if myform.add.errors%}
+  {%for add_error in myform.add.errors%}
+    <span class="alert alert-danger col-md-6">{{add_error}}</span>
+   {%endfor%}
+    {%endif%}
+  </div>
+</div>
+<div class="form-group row mb-3">
+  {{myform.phone.label}}
+  <div class="col-md-6">
+    {{myform.phone(class_='form-control border-success')}}
+  {%if myform.phone.errors%}
+      {%for phone_error in myform.phone.errors%}
+      <span class="alert alert-danger col-md-6">{{phone_error}}</span>
+    {%endfor%}
+    {%endif%}
+  </div>
+</div>
+<div class="form-group row mb-3">
+  {{myform.email.label}}
+  <div class="col-md-6">
+    {{myform.email(class_='form-control border-success')}}
+    {%if myform.email.errors%}
+      {%for email_error in myform.email.errors%}
+      <span class="alert alert-danger col-md-6">{{email_error}}</span>
+      {%endfor%}
+     {%endif%}
+    </div>
+</div>
+<select name="levelid" class="col-6 form-select-lg mb-3">
+  <option selected value="">Open this select menu</option>
+  <!-- <level> -->
+  {% for l in level%}
+  <option value="{{ l.level_id}}">{{l.level_name}}</option>
+  {% endfor %}
+</select>    
+
+    <div class="mb-5">
+      {{myform.submit(class_='btn btn-outline-light btn-large col-6')}}
+    </div>
+  </div>
+  </form>
+    <hr class="col-3 col-md-2 mb-5">
+
+     </main>
+  <footer class="pt-5 my-5 border-top">
+    Created by Fikayo &middot; &copy; 2022
+  </footer>
+</div>
+
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+      
+  </body>
+</html>
